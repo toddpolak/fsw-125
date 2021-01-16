@@ -30,7 +30,7 @@ bountyRouter.route('/')
         newBounty._id = uuid()
         bounties.push(newBounty)
         res.send(`Successfully added ${newBounty.first_name}  ${newBounty.last_name} to database!`)
-})
+    })
 
 bountyRouter.route('/:bountyId')
     .get((req, res) => {
