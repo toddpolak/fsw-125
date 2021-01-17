@@ -14,7 +14,7 @@ const todos = [
 
 todoRouter.route('/')
     .get((req, res) => {
-            res.send(todos)
+        res.send(todos)
     })
     .post((req, res) => {
         const newTodo = req.body
