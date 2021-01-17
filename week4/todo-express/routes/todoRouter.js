@@ -4,8 +4,8 @@ const { v4: uuid } = require('uuid')
 
 const todos = [
     {
-        name: 'Todo Item 1',
-        description: 'Todo Item 1 Description',
+        name: 'Sample Todo Item',
+        description: '',
         imageUrl: '',
         completed: false,
         _id: uuid()
