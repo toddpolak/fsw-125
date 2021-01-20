@@ -11,7 +11,7 @@ function App() {
     }, [])
     
     return (
-        <div>React!</div>
+        <div>React/Express App!</div>
     )
 
 }
