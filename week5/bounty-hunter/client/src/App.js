@@ -11,7 +11,7 @@ function App() {
     }, [])
     
     return (
-        <div>React/Express App!</div>
+        <div>Bounty Hunter App</div>
     )
 
 }
