@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './App.css'
 import Bounty from './components/Bounty'
 import AddBountyForm from './components/AddBountyForm'
 
@@ -15,7 +14,9 @@ function App() {
 
     function addBounty(newBounty) {
         axios.post('/bounties', newBounty)
-            .then(res => console.log(res))
+            .then(res => {
+                setBounties(prevBounties => [...prevBounties, res.data])
+            })
             .catch(err => console.log(err))
     }
 
