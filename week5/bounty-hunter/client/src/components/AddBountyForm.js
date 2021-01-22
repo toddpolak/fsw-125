@@ -9,7 +9,7 @@ function AddBountyForm(props) {
 
     function handleChange(e) {
 
-        console.log(e.target.value)
+        //console.log(e.target.value)
 
         const { name, value } = e.target
         setInputs(prevInputs => ({ ...prevInputs, [name]: value }))
@@ -17,9 +17,9 @@ function AddBountyForm(props) {
 
     function handleSubmit(e) {
 
-        console.log(inputs)
+        //console.log(inputs)
 
-        console.log(props._id)
+        //console.log(props._id)
 
         e.preventDefault()
         props.submit(inputs, props._id)
