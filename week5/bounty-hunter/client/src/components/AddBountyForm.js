@@ -1,17 +1,28 @@
 import React, { useState } from 'react'
 
-function AddMovieForm(props) {
-    const initInputs = { first_name: '', last_name: '' }
+function AddBountyForm(props) {
+    const initInputs = {
+        first_name: props.first_name || '',
+        last_name: props.last_name || ''
+    }
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e) {
+
+        console.log(e.target.value)
+
         const { name, value } = e.target
         setInputs(prevInputs => ({ ...prevInputs, [name]: value }))
     }
 
     function handleSubmit(e) {
+
+        console.log(inputs)
+
+        console.log(props._id)
+
         e.preventDefault()
-        props.addBounty(inputs)
+        props.submit(inputs, props._id)
         setInputs(initInputs)
     }
 
@@ -29,9 +40,9 @@ function AddMovieForm(props) {
                 value={inputs.last_name}
                 onChange={handleChange}
                 placeholder='Last Name' />
-            <button>Add Bounty</button>
+            <button>{props.btnText}</button>
         </form>
     )
 }
 
-export default AddMovieForm
+export default AddBountyForm

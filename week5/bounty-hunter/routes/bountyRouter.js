@@ -42,7 +42,7 @@ bountyRouter.route('/:bountyId')
         const bountyId = req.params.bountyId
         const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
         bounties.splice(bountyIndex, 1)
-        res.send('Successfully deleted bounty!')
+        res.send(`Successfully deleted bounty: ${bountyId}`)
     })
     .put((req, res) => {
         const bountyId = req.params.bountyId
