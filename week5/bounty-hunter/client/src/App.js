@@ -30,9 +30,20 @@ function App() {
     }
 
     function editBounty(updates, bountyId) {
+
+        console.log('updates: ', updates)
+        console.log('bountyId: ', bountyId)
+
         axios.put(`/bounties/${bountyId}`, updates)
             .then(res => {
-                setBounties(prevBounties => prevBounties.map(bounty =>  bounty._id !== bountyId ? bounty : res.data))
+
+                console.log(res.data)
+
+                setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data))
+
+                // this is here just to test that changing state is working to reset the form
+                //setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId))
+
                 //console.log(res) // also log the response to the console (for now)
             })
             .catch(err => console.log(err))
