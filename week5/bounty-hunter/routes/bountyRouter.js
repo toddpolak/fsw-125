@@ -6,17 +6,17 @@ const bounties = [
     { 
         first_name: 'Darth', 
         last_name: 'Millenial', 
-        //living: true,
-        //bounty_amount: 50,
-        //type: 'Sith',
+        living: true,
+        bounty_amount: 50,
+        type: 'Sith',
         _id: uuid() 
     },
     {
         first_name: 'Ahsoka',
         last_name: 'Tano',
-        //living: true,
-        //bounty_amount: 80,
-        //type: 'Jedi',
+        living: true,
+        bounty_amount: 80,
+        type: 'Jedi',
         _id: uuid() 
     }
 ]

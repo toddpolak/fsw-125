@@ -16,6 +16,7 @@ function App() {
         axios.post('/bounties', newBounty)
             .then(res => {
                 setBounties(prevBounties => [...prevBounties, res.data])
+                console.log(res) // log the response to the console
             })
             .catch(err => console.log(err))
     }
@@ -24,7 +25,7 @@ function App() {
         axios.delete(`/bounties/${bountyId}`)
             .then(res => {
                 setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId))
-                //console.log(res) // also log the response to the console (for now)
+                console.log(res) // log the response to the console
             })
             .catch(err => console.log(err))
     }
@@ -32,15 +33,21 @@ function App() {
     function editBounty(updates, bountyId) {
         axios.put(`/bounties/${bountyId}`, updates)
             .then(res => {
-
-                //console.log('updates: ', updates)
-                //console.log('res.data', res.data)
+                setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data))
 
                 // the SetBounties is supposed to trigger a re-render, but it doesn't
+                // most likely because we are not really changing the structure of the array (just values)
                 // https://stackoverflow.com/questions/56266575/why-is-usestate-not-triggering-re-render
 
-                setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data))
-                //console.log(res) // also log the response to the console (for now)
+                // tried this:
+                //let newBounties = [...bounties]
+                //const modifiedBounties = newBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data)
+                //setBounties(modifiedBounties)
+
+                // also tried this:
+                //setBounties([...modifiedBounties])
+
+                console.log(res) // log the response to the console
             })
             .catch(err => console.log(err))
     }
@@ -54,9 +61,7 @@ function App() {
             <AddBountyForm
                 submit={addBounty}
                 btnText={'Add Bounty'}
-
-                toggle={() => {}}
-
+                toggle={() => {}} // workaround for issue with edit re-render
             />
             {
                 bounties.map(bounty =>
@@ -68,7 +73,6 @@ function App() {
             }
         </div>
     )
-
 }
 
 export default App

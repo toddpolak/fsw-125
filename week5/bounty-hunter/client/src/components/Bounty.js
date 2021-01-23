@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import AddBountyForm from './AddBountyForm'
 
 function Bounty(props) {
-    const { first_name, last_name, type, _id, deleteBounty } = props
+    const { first_name, last_name, living, bounty_amount, type, _id, deleteBounty } = props
     const [editToggle, setEditToggle] = useState(false)
 
-    function handleToggle(toggle) {
+    // workaround for issue with edit re-render
+    function setToggle(toggle) {
         setEditToggle(toggle)
     }
 
@@ -14,12 +15,14 @@ function Bounty(props) {
             { !editToggle ?
                 <>
                     <h1>{`Name: ${first_name} ${last_name}`}</h1>
+                    <p>Living: {living === true ? 'Yes' : 'No'}</p>
+                    <p>Bounty Amount: {bounty_amount}</p>
                     <p>Type: {type}</p>
                     <button
                         className='delete-btn'
                         onClick={() => deleteBounty(_id)}>
                                 Delete
-                        </button>
+                    </button>
                     <button
                         className='edit-btn'
                         onClick={() => setEditToggle(prevToggle => !prevToggle)}>
@@ -31,12 +34,13 @@ function Bounty(props) {
                     <AddBountyForm
                         first_name={first_name}
                         last_name={last_name}
+                        living={living}
+                        bounty_amount={bounty_amount}
+                        type={type}
                         _id={_id}
                         btnText='Save'
                         submit={props.editBounty}
-
-                        toggle={handleToggle}
-
+                        toggle={setToggle} // workaround for issue with edit re-render
                     />
                     <button
                         onClick={() => setEditToggle(prevToggle => !prevToggle)}>
