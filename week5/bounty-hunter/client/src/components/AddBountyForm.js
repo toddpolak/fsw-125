@@ -8,22 +8,17 @@ function AddBountyForm(props) {
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e) {
-
-        //console.log(e.target.value)
-
         const { name, value } = e.target
         setInputs(prevInputs => ({ ...prevInputs, [name]: value }))
     }
 
     function handleSubmit(e) {
-
-        //console.log(inputs)
-
-        //console.log(props._id)
-
         e.preventDefault()
         props.submit(inputs, props._id)
         setInputs(initInputs)
+
+        props.toggle(false)
+
     }
 
     return (

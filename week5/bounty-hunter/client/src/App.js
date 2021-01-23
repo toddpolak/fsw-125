@@ -30,26 +30,16 @@ function App() {
     }
 
     function editBounty(updates, bountyId) {
-
-        console.log('bounties: ', bounties)
-        console.log('updates: ', updates)
-
-        //console.log('bountyId: ', bountyId)
-
         axios.put(`/bounties/${bountyId}`, updates)
             .then(res => {
 
-                console.log('res.data: ', res.data)
+                //console.log('updates: ', updates)
+                //console.log('res.data', res.data)
 
-                console.log('bountyId: ', bountyId)
+                // the SetBounties is supposed to trigger a re-render, but it doesn't
+                // https://stackoverflow.com/questions/56266575/why-is-usestate-not-triggering-re-render
 
                 setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data))
-
-                console.log('updated bounties: ', bounties)
-
-                // this is here just to test that changing state is working to reset the form
-                //setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId))
-
                 //console.log(res) // also log the response to the console (for now)
             })
             .catch(err => console.log(err))
@@ -64,6 +54,9 @@ function App() {
             <AddBountyForm
                 submit={addBounty}
                 btnText={'Add Bounty'}
+
+                toggle={() => {}}
+
             />
             {
                 bounties.map(bounty =>

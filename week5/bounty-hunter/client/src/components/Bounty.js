@@ -4,6 +4,11 @@ import AddBountyForm from './AddBountyForm'
 function Bounty(props) {
     const { first_name, last_name, type, _id, deleteBounty } = props
     const [editToggle, setEditToggle] = useState(false)
+
+    function handleToggle(toggle) {
+        setEditToggle(toggle)
+    }
+
     return (
         <div className='bounty'>
             { !editToggle ?
@@ -29,6 +34,9 @@ function Bounty(props) {
                         _id={_id}
                         btnText='Save'
                         submit={props.editBounty}
+
+                        toggle={handleToggle}
+
                     />
                     <button
                         onClick={() => setEditToggle(prevToggle => !prevToggle)}>
