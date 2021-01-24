@@ -31,85 +31,60 @@ function AddBountyForm(props) {
 
     return (
         <form onSubmit={handleSubmit}>
-
             <input
                 type='text'
                 name='first_name'
                 value={inputs.first_name}
                 onChange={handleChange}
                 placeholder='First Name' />
-
             <input
                 type='text'
                 name='last_name'
                 value={inputs.last_name}
                 onChange={handleChange}
                 placeholder='Last Name' />
-
-            <div>
-
-            <label>Bounty Amount:</label>
-
             <input
                 type='number'
                 name='bounty_amount'
                 value={inputs.bounty_amount}
                 onChange={handleChange}
-                placeholder='Enter Amount' />
-            </div>
-
-            <div>
-
-                <span>
-
-                <label>Living:</label>
-
+                placeholder='Bounty Amount' />
+            <span className='radio'>
+                <label>(Living)</label>
                 <label>Yes</label>
-
                 <input
                     type='radio'
                     name='living'
                     value='true'
                     checked={inputs.living === true}
                     onChange={handleChange_living} />
-
                 <label>No</label>
-
                 <input
                     type='radio'
                     name='living'
                     value='false'
                     checked={inputs.living === false}
                         onChange={handleChange_living} />
-
-                </span>
-
-                <span>
-
-                    <label>Sith:</label>
-
+            </span>
+                <span className='radio'>
+                    <label>Sith</label>
                     <input
                         type='radio'
                         name='type'
                         value='Sith'
                         checked={inputs.type === 'Sith'}
                         onChange={handleChange} />
-
-                    <label>Jedi:</label>
-
+                    <label>Jedi</label>
                     <input
                         type='radio'
                         name='type'
                         value='Jedi'
                         checked={inputs.type === 'Jedi'}
                             onChange={handleChange} />
-
-                </span>
-
-            </div>
-
-            <button>{props.btnText}</button>
-
+            </span>
+            <span className='btn-area'>
+                <button className='btn'>{props.btnText}</button>
+            </span>
         </form>
     )
 }

@@ -18,15 +18,17 @@ function Bounty(props) {
                     <p>Living: {living === true ? 'Yes' : 'No'}</p>
                     <p>Bounty Amount: {bounty_amount}</p>
                     <p>Type: {type}</p>
-                    <button
-                        className='delete-btn'
-                        onClick={() => deleteBounty(_id)}>
+                    <span className='btn-area'>
+                        <button
+                            className='btn'
+                            onClick={() => deleteBounty(_id)}>
                                 Delete
-                    </button>
+                        </button>
+                    </span>
                     <button
-                        className='edit-btn'
+                        className='btn'
                         onClick={() => setEditToggle(prevToggle => !prevToggle)}>
-                        Edit
+                            Edit
                     </button>
                  </>
             :
@@ -42,10 +44,13 @@ function Bounty(props) {
                         submit={props.editBounty}
                         toggle={setToggle} // workaround for issue with edit re-render
                     />
-                    <button
-                        onClick={() => setEditToggle(prevToggle => !prevToggle)}>
-                        Cancel
-                     </button>
+                    <span className='btn-area'>
+                        <button
+                            className='btn'
+                            onClick={() => setEditToggle(prevToggle => !prevToggle)}>
+                                Cancel
+                         </button>
+                    </span>
                 </>
             }
         </div>
