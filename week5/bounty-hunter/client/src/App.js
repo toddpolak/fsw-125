@@ -61,7 +61,7 @@ function App() {
             <AddBountyForm
                 submit={addBounty}
                 btnText={'Add Bounty'}
-                toggle={() => {}} // workaround for issue with edit re-render
+                toggle={() => { }} // workaround for issue with edit re-render
             />
             {
                 bounties.map(bounty =>

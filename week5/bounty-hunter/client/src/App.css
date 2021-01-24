@@ -15,9 +15,8 @@ p {
 }
 
 .bounty-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 32px;
+    width: 600px;
+    margin: auto;
 }
 
 .bounty {

@@ -5,8 +5,7 @@ function Bounty(props) {
     const { first_name, last_name, living, bounty_amount, type, _id, deleteBounty } = props
     const [editToggle, setEditToggle] = useState(false)
 
-    // workaround for issue with edit re-render
-    function setToggle(toggle) {
+    function setToggle(toggle) { // workaround for issue with edit re-render
         setEditToggle(toggle)
     }
 
