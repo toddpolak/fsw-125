@@ -78,7 +78,7 @@ function App() {
 export default App
 
 // https://bryanuniversity.instructuremedia.com/embed/734fabe0-431c-4693-9d4e-09c286165347
-// 11:55 into the video ... notice the key set on the Movie component. "movie.title"
+// 11:45 into the video ... notice the key set on the Movie component. "movie.title"
 
 // Because he's using the movie title as the key when he maps the array to the component render,
 // you can edit the movie record as long as you change the title every time and
