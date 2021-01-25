@@ -64,10 +64,10 @@ function App() {
                 toggle={() => { }} // workaround for issue with edit re-render
             />
             {
-                bounties.map(bounty =>
+                bounties.map((bounty, index) =>
                     <Bounty
                         {...bounty}
-                        key={bounty._id}
+                        key={index}
                         deleteBounty={deleteBounty}
                         editBounty={editBounty}/>)
             }
@@ -76,3 +76,19 @@ function App() {
 }
 
 export default App
+
+// https://bryanuniversity.instructuremedia.com/embed/734fabe0-431c-4693-9d4e-09c286165347
+// 11:55 into the video ... notice the key set on the Movie component. "movie.title"
+
+// Because he's using the movie title as the key when he maps the array to the component render,
+// you can edit the movie record as long as you change the title every time and
+// React does the component re-rendrer.
+
+// If you try to edit anything other than the title, you will have the re-render issue.
+// I used _id, or the map index as the key and the re-render never worked.
+// Using the "title" etc. as the key gives a warning if you create multiple records with the same title
+// because the keys are not unique.
+
+// 15:05 into the video ... he talks about the happy side effect of the component re-redering because it has new data.
+// This isn't really correct, because the array (structure) essentially does't change, so the re-render really doesn't work.
+// It only worked for him because of his "key" assignment on the movie component.
