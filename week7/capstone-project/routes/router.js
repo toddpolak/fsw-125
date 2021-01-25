@@ -2,21 +2,31 @@ const express = require('express')
 const router = express.Router()
 const { v4: uuid } = require('uuid')
 
-const data = [
+const planets = [
     {
-        field1: 'Test Data'
+        planet: 'Kepler-452b',
+        host_star: 'Kepler-452',
+        potentially_habitable: true,
+        info: [
+            {
+                temp: '248 F',
+                distance_to_earth: '1402'
+            }
+        ],
+        orbit_days: 385,
+        _id: uuid()
     }
 ]
 
 router.route('/')
     .get((req, res) => {
-        res.send(data)
+        res.send(planets)
     })
     .post((req, res) => {
-        const newData = req.body
-        newData._id = uuid()
-        data.push(newData)
-        res.send(newData)
+        const newPlanet = req.body
+        newPlanet._id = uuid()
+        planets.push(newPlanet)
+        res.send(newPlanet)
     })
 
 module.exports = router

@@ -7,7 +7,7 @@ app.use('/', express.json())
 app.use(morgan('dev'))
 
 // Routes
-app.use('/data', require('./routes/router'))
+app.use('/planets', require('./routes/router'))
 
 // Error handler
 app.use((err, req, res, next) => {
