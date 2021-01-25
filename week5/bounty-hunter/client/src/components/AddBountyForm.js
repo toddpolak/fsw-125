@@ -64,7 +64,7 @@ function AddBountyForm(props) {
                     name='living'
                     value='false'
                     checked={inputs.living === false}
-                        onChange={handleChange_living} />
+                    onChange={handleChange_living} />
             </span>
             <span className='radio'>
                 <label>Sith</label>
@@ -80,7 +80,7 @@ function AddBountyForm(props) {
                     name='type'
                     value='Jedi'
                     checked={inputs.type === 'Jedi'}
-                        onChange={handleChange} />
+                    onChange={handleChange} />
             </span>
             <span className='btn-area'>
                 <button className='btn'>{props.btnText}</button>
