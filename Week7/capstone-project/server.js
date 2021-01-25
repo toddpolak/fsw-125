@@ -11,7 +11,7 @@ app.use('/data', require('./routes/router'))
 
 // Error handler
 app.use((err, req, res, next) => {
-    console.log(err)
+
 })
 
 // Server Listen
