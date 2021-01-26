@@ -31,20 +31,38 @@ const planets = [
 
 router.route('/')
     .get((req, res) => {
-        res.send(planets)
+        res.status(200).send(planets)
     })
     .post((req, res) => {
         const newPlanet = req.body
         newPlanet._id = uuid()
         planets.push(newPlanet)
-        res.send(newPlanet)
+        res.status(201).send(newPlanet)
     })
+
 router.route('/:planetId')
+    .get((req, res, next) => {
+        const planetId = req.params.planetId
+        const foundPlanet = planets.find(planet => planet._id === planetId)
+
+        if (!foundPlanet) {
+            const error = new Error(`The item with _id: ${planetId} was not found.`)
+            res.status(500)
+            return next(error)
+        }
+        res.status(200).send(foundPlanet)
+    })
     .put((req, res) => {
         const planetId = req.params.planetId
         const planetIndex = planets.findIndex(planet => planet._id === planetId)
         const updatedPlanet = Object.assign(planets[planetIndex], req.body)
-        res.send(updatedPlanet)
+        res.status(201).send(updatedPlanet)
+    })
+    .delete((req, res) => {
+        const planetId = req.params.planetId
+        const planetIndex = planets.findIndex(planet => planet._id === planetId)
+        bounties.splice(planetIndex, 1)
+        res.send(`${planetId} deleted`)
     })
 
 module.exports = router
