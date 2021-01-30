@@ -5,52 +5,76 @@ const items = [
     {
         name: 'bannana',
         type: 'fruit',
-        color: 'yellow'
+        color: 'yellow',
+        price: .75
     },
     {
         name: 'orange',
         type: 'fruit',
-        color: 'orange'
+        color: 'orange',
+        price: .50
     },
     {
         name: 'apple',
         type: 'fruit',
-        color: 'red'
+        color: 'red',
+        price: .25
     },
     {
         name: 'carrot',
         type: 'vegetable',
-        color: 'orange'
+        color: 'orange',
+        price: .20
     },
     {
         name: 'cucumber',
         type: 'vegetable',
-        color: 'green'
+        color: 'green',
+        price: .50
     },
     {
         name: 'spanich',
         type: 'vegetable',
-        color: 'green'
+        color: 'green',
+        price: .25
     }
 ]
 
 router.route('/')
     .get((req, res) => {
-        res.status(200).send(items)
+        res.send(items)
+    })
+
+router.route('/fruit')
+    .get((req, res) => {
+        const filteredItems = items.filter(item => item.type === 'fruit')
+        res.send(filteredItems)
+    })
+
+router.route('/vegetable')
+    .get((req, res) => {
+        const filteredItems = items.filter(item => item.type === 'vegetable')
+        res.send(filteredItems)
     })
 
 router.route('/search/color')
     .get((req, res) => {
         const color = req.query.color
         const filteredItems = items.filter(item => item.color === color)
-        res.status(200).send(filteredItems)
+        res.send(filteredItems)
     })
 
-router.route('/search/type')
+router.route('/search/name')
     .get((req, res) => {
-        const type = req.query.type
-        const filteredItems = items.filter(item => item.type === type)
-        res.status(200).send(filteredItems)
+        const name = req.query.name
+        const filteredItems = items.filter(item => item.name === name)
+        res.send(filteredItems)
+    })
+router.route('/search/price')
+    .get((req, res) => {
+        const price = req.query.price
+        const filteredItems = items.filter(item => item.price === Number(price))
+        res.send(filteredItems)
     })
 
 module.exports = router
