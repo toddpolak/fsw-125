@@ -18,6 +18,14 @@ const bounties = [
         bounty_amount: 80,
         type: 'Jedi',
         _id: uuid() 
+    },
+    {
+        first_name: 'Jacen',
+        last_name: 'Solo',
+        living: true,
+        bounty_amount: 30,
+        type: 'Sith',
+        _id: uuid() 
     }
 ]
 
@@ -30,6 +38,13 @@ bountyRouter.route('/')
         newBounty._id = uuid()
         bounties.push(newBounty)
         res.send(newBounty)
+    })
+
+bountyRouter.route('/bounty')
+    .get((req, res) => {
+        const type = req.query.type
+        const filteredItems = bounties.filter(bounty => bounty.type.toLowerCase() === type.toLowerCase())
+        res.send(filteredItems)
     })
 
 bountyRouter.route('/:bountyId')

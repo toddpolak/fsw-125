@@ -26,7 +26,7 @@ function AddBountyForm(props) {
         e.preventDefault()
         props.submit(inputs, props._id)
         setInputs(initInputs)
-        props.toggle(false) // workaround for issue with edit re-render
+        props.toggle(false)
     }
 
     return (
@@ -49,24 +49,7 @@ function AddBountyForm(props) {
                 value={inputs.bounty_amount}
                 onChange={handleChange}
                 placeholder='Bounty Amount' />
-            <span className='radio'>
-                <label>(Living)</label>
-                <label>Yes</label>
-                <input
-                    type='radio'
-                    name='living'
-                    value='true'
-                    checked={inputs.living === true}
-                    onChange={handleChange_living} />
-                <label>No</label>
-                <input
-                    type='radio'
-                    name='living'
-                    value='false'
-                    checked={inputs.living === false}
-                    onChange={handleChange_living} />
-            </span>
-            <span className='radio'>
+            <div className='radio'>
                 <label>Sith</label>
                 <input
                     type='radio'
@@ -81,10 +64,29 @@ function AddBountyForm(props) {
                     value='Jedi'
                     checked={inputs.type === 'Jedi'}
                     onChange={handleChange} />
-            </span>
-            <span className='btn-area'>
-                <button className='btn'>{props.btnText}</button>
-            </span>
+            </div>
+            <div className='radio radio-living'>
+                <div>
+                    <label>Living:</label>
+                </div>
+                <label>Yes</label>
+                <input
+                    type='radio'
+                    name='living'
+                    value='true'
+                    checked={inputs.living === true}
+                    onChange={handleChange_living} />
+                <label>No</label>
+                <input
+                    type='radio'
+                    name='living'
+                    value='false'
+                    checked={inputs.living === false}
+                    onChange={handleChange_living} />
+            </div>
+            <div className='btn-area'>
+                <button className='blue-btn'>{props.btnText}</button>
+            </div>
         </form>
     )
 }

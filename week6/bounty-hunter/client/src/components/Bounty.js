@@ -5,7 +5,7 @@ function Bounty(props) {
     const { first_name, last_name, living, bounty_amount, type, _id, deleteBounty } = props
     const [editToggle, setEditToggle] = useState(false)
 
-    function setToggle(toggle) { // workaround for issue with edit re-render
+    function setToggle(toggle) {
         setEditToggle(toggle)
     }
 
@@ -13,24 +13,24 @@ function Bounty(props) {
         <div className='bounty'>
             { !editToggle ?
                 <>
-                    <h1>{`Name: ${first_name} ${last_name}`}</h1>
-                    <p>Living: {living === true ? 'Yes' : 'No'}</p>
+                    <h1>{`${first_name} ${last_name}`}</h1>
                     <p>Bounty Amount: {bounty_amount}</p>
                     <p>Type: {type}</p>
+                    <p>Living: {living === true ? 'Yes' : 'No'}</p>
                     <span className='btn-area'>
                         <button
-                            className='btn'
+                            className='blue-btn'
                             onClick={() => deleteBounty(_id)}>
                                 Delete
                         </button>
                     </span>
                     <button
-                        className='btn'
+                        className='blue-btn'
                         onClick={() => setEditToggle(prevToggle => !prevToggle)}>
                             Edit
                     </button>
-                 </>
-            :
+                </>
+                :
                 <>
                     <AddBountyForm
                         first_name={first_name}
@@ -41,11 +41,11 @@ function Bounty(props) {
                         _id={_id}
                         btnText='Save'
                         submit={props.editBounty}
-                        toggle={setToggle} // workaround for issue with edit re-render
+                        toggle={setToggle}
                     />
                     <span className='btn-area'>
                         <button
-                            className='btn'
+                            className='blue-btn'
                             onClick={() => setEditToggle(prevToggle => !prevToggle)}>
                                 Cancel
                          </button>
