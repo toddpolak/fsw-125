@@ -83,16 +83,15 @@ label {
     font-weight: bold;
 }
 
-.filter label {
-    padding: 10px;
-    color: white;
-    font-weight: normal;
-}
-
 .filter {
     display: block;
     width: 300px;
-    margin: 10px 10px 10px 50px;
+    margin: auto;
     padding: 10px;
     text-align:center;
+}
+
+.filter-select {
+    width: 200px;
+    margin: auto;
 }

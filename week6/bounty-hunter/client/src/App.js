@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Select from 'react-select'
 import axios from 'axios'
 import Bounty from './components/Bounty'
 import AddBountyForm from './components/AddBountyForm'
@@ -6,22 +7,39 @@ import AddBountyForm from './components/AddBountyForm'
 function App() {
     const [bounties, setBounties] = useState([])
 
+    const [filterValue, setFilterValue] = useState()
+
+    const filters = [
+        {
+            value: 'jedi',
+            label: 'Jedis'
+        },
+        {
+            value: 'sith',
+            label: 'Siths'
+        },
+        {
+            value: 'all',
+            label: 'All'
+        }
+    ]
+
     function getBounties() {
         axios.get('/bounties')
             .then(res => setBounties(res.data))
             .catch(err => console.log(err))
     }
 
-    function getJedis() {
-        axios.get('/bounties/bounty?type=jedi')
-            .then(res => setBounties(res.data))
-            .catch(err => console.log(err))
-    }
+    function filter(e) {
+        const filter = e.value
 
-    function getSiths() {
-        axios.get('/bounties/bounty?type=sith')
-            .then(res => setBounties(res.data))
-            .catch(err => console.log(err))
+        filter === 'all' 
+            ? getBounties()
+            : axios.get(`/bounties/bounty?type=${filter}`)
+                .then(res => setBounties(res.data))
+                .catch(err => console.log(err))
+
+        setFilterValue(e)
     }
 
     function addBounty(newBounty) {
@@ -62,10 +80,13 @@ function App() {
                 toggle={() => {}}
             />
             <div className='filter'>
-                <label>Filter:</label>
-                <button onClick={() => { getJedis() }}>Jedis</button>
-                <button onClick={() => { getSiths() }}>Siths</button>
-                <button onClick={() => { getBounties() }}>Both</button>
+                <Select
+                    placeholder='- Filter -'
+                    value={filterValue}
+                    options={filters}
+                    onChange={filter}
+                    className='filter-select'
+                />
             </div>
             {
                 bounties.map((bounty, index) =>
