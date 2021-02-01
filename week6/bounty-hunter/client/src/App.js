@@ -88,14 +88,16 @@ function App() {
                     className='filter-select'
                 />
             </div>
-            {
-                bounties.map((bounty, index) =>
-                    <Bounty
-                        {...bounty}
-                        key={index}
-                        deleteBounty={deleteBounty}
-                        editBounty={editBounty}/>)
-            }
+            <div className='bounties'>
+                {
+                    bounties.map((bounty, index) =>
+                        <Bounty
+                            {...bounty}
+                            key={index}
+                            deleteBounty={deleteBounty}
+                            editBounty={editBounty}/>)
+                }
+            </div>
         </div>
     )
 }

@@ -10,6 +10,8 @@ function AddBountyForm(props) {
     }
     const [inputs, setInputs] = useState(initInputs)
 
+    let cancelBtn
+
     function handleChange(e) {
         const { name, value } = e.target
 
@@ -29,17 +31,28 @@ function AddBountyForm(props) {
         props.toggle(false)
     }
 
+    if (props.showCancel) {
+        cancelBtn = <button
+            type='button'
+            className='blue-btn'
+            onClick={() => props.toggle(false)}>
+                Cancel
+            </button>
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type='text'
                 name='first_name'
+                required
                 value={inputs.first_name}
                 onChange={handleChange}
                 placeholder='First Name' />
             <input
                 type='text'
                 name='last_name'
+                required
                 value={inputs.last_name}
                 onChange={handleChange}
                 placeholder='Last Name' />
@@ -86,6 +99,7 @@ function AddBountyForm(props) {
             </div>
             <div className='btn-area'>
                 <button className='blue-btn'>{props.btnText}</button>
+                {cancelBtn}
             </div>
         </form>
     )

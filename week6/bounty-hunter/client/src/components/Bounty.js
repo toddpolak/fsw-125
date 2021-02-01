@@ -13,7 +13,7 @@ function Bounty(props) {
         <div className='bounty'>
             { !editToggle ?
                 <>
-                    <h1>{`${first_name} ${last_name}`}</h1>
+                    <h3>{`${first_name} ${last_name}`}</h3>
                     <p>Bounty Amount: {bounty_amount}</p>
                     <p>Type: {type}</p>
                     <p>Living: {living === true ? 'Yes' : 'No'}</p>
@@ -23,12 +23,12 @@ function Bounty(props) {
                             onClick={() => deleteBounty(_id)}>
                                 Delete
                         </button>
+                        <button
+                            className='blue-btn'
+                            onClick={() => setEditToggle(prevToggle => !prevToggle)}>
+                                Edit
+                        </button>
                     </span>
-                    <button
-                        className='blue-btn'
-                        onClick={() => setEditToggle(prevToggle => !prevToggle)}>
-                            Edit
-                    </button>
                 </>
                 :
                 <>
@@ -42,14 +42,8 @@ function Bounty(props) {
                         btnText='Save'
                         submit={props.editBounty}
                         toggle={setToggle}
+                        showCancel={true}
                     />
-                    <span className='btn-area'>
-                        <button
-                            className='blue-btn'
-                            onClick={() => setEditToggle(prevToggle => !prevToggle)}>
-                                Cancel
-                         </button>
-                    </span>
                 </>
             }
         </div>
