@@ -9,17 +9,14 @@ function Planets() {
 
     useEffect(() => {
         dispatch(getPlanets())
-    }, [dispatch])
+     }, [dispatch])
 
-    function handleEdit(inputs, index) {
-        dispatch(editPlanet(inputs, index))
+    function handleEdit(inputs, id) {
+        dispatch(editPlanet(inputs, id))
     }
 
     return (
         <div>
-
-            {console.log('planets: ', planets)}
-
             {
                 planets.map((planet, index) =>
                     <Planet
@@ -27,7 +24,6 @@ function Planets() {
                         key={index}
                         handleEdit={handleEdit} />)
             }
-
         </div>
     )
 }

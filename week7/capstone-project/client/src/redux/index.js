@@ -3,7 +3,6 @@ import thunk from 'redux-thunk'
 import axios from 'axios'
 
 export function getPlanets() {
-
     return function(dispatch) {
         return axios.get('/planets')
             .then(res => {
@@ -14,7 +13,6 @@ export function getPlanets() {
             })
             .catch(err => console.log(err))
     }
-
 }
 
 export function addPlanet(planet) {
@@ -25,10 +23,6 @@ export function addPlanet(planet) {
 }
 
 export function editPlanet(planet, id) {
-
-    console.log('planet: ', planet)
-    console.log('id: ', id)
-
     return function (dispatch) {
         return axios.put(`/planets/${id}`, planet)
             .then(res => {
@@ -40,16 +34,6 @@ export function editPlanet(planet, id) {
             })
             .catch(err => console.log(err))
     }
-
-    /*
-    return {
-        type: 'EDIT_PLANET',
-        payload: planet,
-        id: id
-    }
-    */
-
-
 }
 
 export function deletePlanet(index) {
@@ -69,10 +53,16 @@ function reducer(planets = [], action) {
             return planets = [...planets, action.payload]
 
         case 'EDIT_PLANET':
-            return planets = planets.map(planet => action.id !== planet._id ? planet : action.payload)
+            const editedPlanets = planets = planets.map(planet => action.id !== planet._id ? planet : action.payload)
+
+            console.log('editedPlanets: ', editedPlanets)
+
+            return editedPlanets
+
             //return planets = planets.map((planet, index) => action.index !== index ? planet : action.payload)
 
         case 'DELETE_PLANET':
+            break;
             //let updatedPlanets = planets.filter((planet, index) => index !== action.payload)
 
             //return planets = updatedPlanets

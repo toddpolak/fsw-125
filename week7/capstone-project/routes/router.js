@@ -54,6 +54,9 @@ router.route('/:planetId')
     })
     .put((req, res) => {
         const planetId = req.params.planetId
+
+        console.log('put planetId: ', planetId)
+
         const planetIndex = planets.findIndex(planet => planet._id === planetId)
         const updatedPlanet = Object.assign(planets[planetIndex], req.body)
 
