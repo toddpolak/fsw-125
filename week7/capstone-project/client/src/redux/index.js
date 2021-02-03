@@ -1,7 +1,19 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import axios from 'axios'
 
 export function getPlanets() {
+
+    return function(dispatch) {
+        return axios.get('/planets')
+            .then(res => {
+                dispatch({
+                    type: 'GET_PLANETS',
+                    payload: res.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
 
 }
 
@@ -12,12 +24,32 @@ export function addPlanet(planet) {
     }
 }
 
-export function editContact(planet, index) {
+export function editPlanet(planet, id) {
+
+    console.log('planet: ', planet)
+    console.log('id: ', id)
+
+    return function (dispatch) {
+        return axios.put(`/planets/${id}`, planet)
+            .then(res => {
+                dispatch({
+                    type: 'EDIT_PLANET',
+                    payload: planet,
+                    id: id
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+    /*
     return {
         type: 'EDIT_PLANET',
         payload: planet,
-        index: index
+        id: id
     }
+    */
+
+
 }
 
 export function deletePlanet(index) {
@@ -29,24 +61,26 @@ export function deletePlanet(index) {
 
 function reducer(planets = [], action) {
     switch (action.type) {
+
+        case 'GET_PLANETS':
+            return planets = [...action.payload]
+
         case 'ADD_PLANET':
             return planets = [...planets, action.payload]
 
         case 'EDIT_PLANET':
-            return planets = planets.map((planet, index) => action.index !== index ? planet : action.payload)
+            return planets = planets.map(planet => action.id !== planet._id ? planet : action.payload)
+            //return planets = planets.map((planet, index) => action.index !== index ? planet : action.payload)
 
         case 'DELETE_PLANET':
-            const updatedPlanets = planets.filter((planet, index) => index !== action.payload)
+            //let updatedPlanets = planets.filter((planet, index) => index !== action.payload)
 
-            return planets = updatedPlanets
-
+            //return planets = updatedPlanets
         default:
             return planets
     }
 }
 
 const store = createStore(reducer, applyMiddleware(thunk))
-
-store.subscribe(() => console.log(store.getState()))
 
 export default store

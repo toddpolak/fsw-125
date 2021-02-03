@@ -56,6 +56,9 @@ router.route('/:planetId')
         const planetId = req.params.planetId
         const planetIndex = planets.findIndex(planet => planet._id === planetId)
         const updatedPlanet = Object.assign(planets[planetIndex], req.body)
+
+        console.log('updatedPlanet: ', updatedPlanet)
+
         res.status(201).send(updatedPlanet)
     })
     .delete((req, res) => {
