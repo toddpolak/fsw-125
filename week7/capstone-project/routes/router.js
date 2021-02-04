@@ -35,6 +35,7 @@ router.route('/')
     })
     .post((req, res) => {
         const newPlanet = req.body
+
         newPlanet._id = uuid()
         planets.push(newPlanet)
         res.status(201).send(newPlanet)
@@ -54,20 +55,16 @@ router.route('/:planetId')
     })
     .put((req, res) => {
         const planetId = req.params.planetId
-
-        console.log('put planetId: ', planetId)
-
         const planetIndex = planets.findIndex(planet => planet._id === planetId)
         const updatedPlanet = Object.assign(planets[planetIndex], req.body)
-
-        console.log('updatedPlanet: ', updatedPlanet)
 
         res.status(201).send(updatedPlanet)
     })
     .delete((req, res) => {
         const planetId = req.params.planetId
         const planetIndex = planets.findIndex(planet => planet._id === planetId)
-        bounties.splice(planetIndex, 1)
+
+        planets.splice(planetIndex, 1)
         res.send(`${planetId} deleted`)
     })
 

@@ -16,9 +16,15 @@ export function getPlanets() {
 }
 
 export function addPlanet(planet) {
-    return {
-        type: 'ADD_PLANET',
-        payload: planet
+    return function (dispatch) {
+        return axios.post('/planets', planet)
+            .then(res => {
+                dispatch({
+                    type: 'ADD_PLANET',
+                    payload: res.data
+                })
+            })
+            .catch(err => console.log(err))
     }
 }
 
@@ -36,10 +42,19 @@ export function editPlanet(planet, id) {
     }
 }
 
-export function deletePlanet(index) {
-    return {
-        type: 'DELETE_PLANET',
-        payload: index
+export function deletePlanet(id) {
+
+    console.log('deletePlanet: ', id)
+
+    return function (dispatch) {
+        return axios.delete(`/planets/${id}`)
+            .then(res => {
+                dispatch({
+                    type: 'DELETE_PLANET',
+                    id: id
+                })
+            })
+            .catch(err => console.log(err))
     }
 }
 
@@ -48,24 +63,32 @@ function reducer(planets = [], action) {
 
         case 'GET_PLANETS':
             return planets = [...action.payload]
-
         case 'ADD_PLANET':
+
+            console.log('ADD_PLANET: ', action.payload)
+
             return planets = [...planets, action.payload]
 
         case 'EDIT_PLANET':
-            const editedPlanets = planets = planets.map(planet => action.id !== planet._id ? planet : action.payload)
 
-            console.log('editedPlanets: ', editedPlanets)
+            const editedPlanets = planets
 
-            return editedPlanets
+            //console.log('EDIT_PLANET: ', editedPlanets)
 
-            //return planets = planets.map((planet, index) => action.index !== index ? planet : action.payload)
+            return editedPlanets.map(planet => action.id !== planet._id ? planet : action.payload)
 
         case 'DELETE_PLANET':
-            break;
-            //let updatedPlanets = planets.filter((planet, index) => index !== action.payload)
 
-            //return planets = updatedPlanets
+            console.log('DELETE_PLANET: ', action.id)
+
+            return planets.filter((planet) => planet._id !== action.id)
+
+            //const updatedPlanets = planets.filter((planet) => planet._id !== action.id)
+
+            //console.log('DELETE_PLANET: ', updatedPlanets)
+
+            //return updatedPlanets
+
         default:
             return planets
     }

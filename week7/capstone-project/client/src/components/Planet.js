@@ -1,31 +1,15 @@
 import React, { useState } from 'react'
+import EditForm from './EditForm'
 
 function Planet(props) {
-    /*
-    const {
-        planet, host_star, avg_temp, distance_to_earth, moons,
-        potentially_habitable, orbit_days, _id
-    } = props
-    */
+    const { planet, _id, handleEdit, handleDelete } = props
 
-    const initInputs = {
-        _id: props._id,
-        planet: props.planet
-    }
+    console.log('props: ', props)
+
+    console.log('props: (_id) ', _id)
+
 
     const [editToggle, setEditToggle] = useState(false)
-    const [inputs, setInputs] = useState(initInputs)
-
-    function handleChange(e) {
-        const { name, value } = e.target
-
-        setInputs(prevInputs => ({ ...prevInputs, [name]: value }))
-    }
-
-    function savePlanet() {
-        props.handleEdit(inputs, props._id)
-        setEditToggle(false)
-    }
 
     return (
         <div>
@@ -37,26 +21,20 @@ function Planet(props) {
                             onClick={() => setEditToggle(prevToggle => !prevToggle)}>
                             Edit
                         </button>
+                        <button
+                            onClick={() => handleDelete(_id)}>
+                            Delete
+                        </button>
                     </div>
                 </>
                 :
                 <>
-                    <div>
-                        <input
-                            type='text'
-                            name='planet'
-                            value={inputs.planet}
-                            onChange={handleChange}
-                            placeholder='Planet' />
-                        <button
-                            onClick={savePlanet}>
-                                Save
-                        </button>
-                        <button
-                            onClick={() => setEditToggle(prevToggle => !prevToggle)}>
-                            Cancel
-                        </button>
-                    </div>
+                    <EditForm 
+                        planet={planet}
+                        _id={_id}
+                        handleEdit={handleEdit}
+                        setEditToggle={setEditToggle}
+                    />
                 </>
             }
         </div>
