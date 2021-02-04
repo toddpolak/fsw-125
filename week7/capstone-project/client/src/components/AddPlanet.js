@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
-function AddForm(props) {
+function AddPlanet(props) {
 
     const initInputs = {
-        planet: ''
+        planet: '',
+        notes: []
     }
 
     const [inputs, setInputs] = useState(initInputs)
@@ -35,4 +36,4 @@ function AddForm(props) {
 
 }
 
-export default AddForm
+export default AddPlanet

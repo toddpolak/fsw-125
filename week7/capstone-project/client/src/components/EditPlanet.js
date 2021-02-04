@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function EditForm(props) {
+function EditPlanet(props) {
     /*
     const {
         planet, host_star, avg_temp, distance_to_earth, moons,
@@ -29,7 +29,7 @@ function EditForm(props) {
         //console.log('savePlanet: ', inputs, props._id)
 
         props.handleEdit(inputs, props._id)
-        props.setEditToggle(false)
+        props.setPlanetEditToggle(false)
     }
 
     return (
@@ -45,11 +45,11 @@ function EditForm(props) {
                 Save
             </button>
             <button
-                onClick={() => props.setEditToggle(prevToggle => !prevToggle)}>
+                onClick={() => props.setPlanetEditToggle(prevToggle => !prevToggle)}>
                 Cancel
             </button>
         </div>
     )
 }
 
-export default EditForm
+export default EditPlanet

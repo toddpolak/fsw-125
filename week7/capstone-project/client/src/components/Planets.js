@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPlanets, addPlanet, editPlanet, deletePlanet } from '../redux'
-import AddForm from './AddForm'
+import AddPlanet from './AddPlanet'
 import Planet from './Planet'
 
 function Planets() {
@@ -31,24 +31,29 @@ function Planets() {
     }
 
     return (
+
         <div>
 
             { console.log('Planets.js: ', planets)}
 
             <div>
-                <AddForm
+                <AddPlanet
                     handleSave={handleSave} />
             </div>
 
             {
+                
                 planets.map((planet, index) =>
                     <Planet
                         {...planet}
                         key={index}
                         handleEdit={handleEdit}
                         handleDelete={handleDelete} />)
+
             }
+
         </div>
+
     )
 }
 

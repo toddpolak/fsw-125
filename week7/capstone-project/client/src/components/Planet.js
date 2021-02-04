@@ -1,41 +1,69 @@
 import React, { useState } from 'react'
-import EditForm from './EditForm'
+import EditPlanet from './EditPlanet'
+import Notes from './Notes'
 
 function Planet(props) {
-    const { planet, _id, handleEdit, handleDelete } = props
+    const { planet, notes, _id, handleEdit, handleDelete } = props
 
     console.log('props: ', props)
 
     console.log('props: (_id) ', _id)
 
+    console.log('notes: ', notes)
 
-    const [editToggle, setEditToggle] = useState(false)
+    const [planetEditToggle, setPlanetEditToggle] = useState(false)
 
     return (
         <div>
-            { !editToggle ?
+
+            { !planetEditToggle ?
                 <>
-                    <div className='planet'>
-                        {`${props.planet}`}
-                        <button
-                            onClick={() => setEditToggle(prevToggle => !prevToggle)}>
-                            Edit
-                        </button>
-                        <button
-                            onClick={() => handleDelete(_id)}>
-                            Delete
-                        </button>
+
+                    <div className='planet-container'>
+
+                        <div className='planet'>
+                            {planet}
+                            <button
+                                onClick={() => setPlanetEditToggle(prevToggle => !prevToggle)}>
+                                Edit
+                            </button>
+                            <button
+                                onClick={() => handleDelete(_id)}>
+                                Delete
+                            </button>
+                        </div>
+
+                        <div className='notes-container'>
+
+                            {notes.map((note, index) =>
+
+                                <Notes
+                                    key={index}
+                                    _id={_id}
+                                    note={note}
+                                    index={index} />)
+                            }
+                           
+                        </div>
+
                     </div>
+
                 </>
                 :
                 <>
-                    <EditForm 
-                        planet={planet}
-                        _id={_id}
-                        handleEdit={handleEdit}
-                        setEditToggle={setEditToggle}
-                    />
+
+                    <div className='planet-container'>
+                        <div className='planet'>
+                            <EditPlanet 
+                                planet={planet}
+                                _id={_id}
+                                handleEdit={handleEdit}
+                                setPlanetEditToggle={setPlanetEditToggle} />
+                        </div>
+                    </div>
+
                 </>
+
             }
         </div>
     )

@@ -8,8 +8,9 @@ const planets = [
         host_star: 'Kepler-452',
         avg_temp: '17 Degrees F',
         distance_to_earth: '1402',
-        moons: [
-            'unknown'
+        notes: [
+            'Notes for Kepler-452b',
+            'Additional notes for Kepler-452b'
         ],
         potentially_habitable: true,
         orbit_days: 385,
@@ -20,8 +21,9 @@ const planets = [
         host_star: 'Sun',
         avg_temp: '-81 Degrees F',
         distance_to_earth: '',
-        moons: [
-            'Phobos', 'Deimos'
+        notes: [
+            'Notes for Mars',
+            'Additional notes for Mars'
         ],
         potentially_habitable: true,
         orbit_days: 687,
