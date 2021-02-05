@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addPlanet } from '../redux'
 
 function AddPlanet(props) {
+
+    const dispatch = useDispatch()
 
     const initInputs = {
         planet: '',
@@ -15,20 +19,20 @@ function AddPlanet(props) {
         setInputs(prevInputs => ({ ...prevInputs, [name]: value }))
     }
 
-    function addPlanet() {
-        props.handleSave(inputs)
+    function handleSave() {
+        dispatch(addPlanet(inputs))
         setInputs(initInputs)
     }
 
     return (
-        <div>
+        <div className='form'>
             <input
                 type='text'
                 name='planet'
                 value={inputs.planet}
                 onChange={handleChange}
                 placeholder='Planet' />
-            <button onClick={addPlanet}>
+            <button onClick={handleSave}>
             Add Planet
             </button>
         </div>

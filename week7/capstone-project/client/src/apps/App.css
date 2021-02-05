@@ -1,3 +1,7 @@
+h2 {
+    text-align: center;
+}
+
 .container {
     background-color: whitesmoke;
     width: 800px;
@@ -5,34 +9,46 @@
     border: 1px solid red;
 }
 
-/*
-.planet-container {
-    border: 1px solid blue;
-    padding: 10px;
-}
-*/
-
-.planet-container {
-    width: 700px;
-    display: grid;
-    grid-template-areas: 'a a';
-    /*
-    grid-auto-columns: 350px;
-    */
-    grid-row-gap: 10px;
-    grid-column-gap: 10px;
+.form {
+    width: 500px;
+    border: 1px solid black;
     padding: 20px;
     margin: auto;
 }
 
+.planet-container {
+    width: 750px;
+    display: grid;
+    grid-template-areas: 'a a';
+    grid-auto-columns: 300px;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    padding: 10px;
+    margin: auto;
+}
+
 .planet {
-    width: 250px;
+    width: 270px;
     border: 1px solid orange;
     padding: 10px;
 }
 
+.items {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid green;
+}
+
+span.left_column {
+    font-weight: bold;
+}
+
+span.right_column {
+
+}
+
 .notes-container {
-    width: 400px;
+    width: 425px;
     border: 1px solid green;
     padding: 10px;
 }

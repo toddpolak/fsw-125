@@ -7,10 +7,10 @@ const planets = [
         planet: 'Kepler-452b',
         host_star: 'Kepler-452',
         avg_temp: '17 Degrees F',
-        distance_to_earth: '1402',
+        distance_to_earth: '1,402 (ly)',
         notes: [
-            'Notes for Kepler-452b',
-            'Additional notes for Kepler-452b'
+            'Kepler-452b has a probable mass five times that of Earth, and its surface gravity is nearly twice as Earths, though calculations of mass for exoplanets are only rough estimates.',
+            'It is not known if Kepler-452b is a rocky planet but based on its small radius, Kepler-452b is likely to be rocky'
         ],
         potentially_habitable: true,
         orbit_days: 385,
@@ -20,7 +20,7 @@ const planets = [
         planet: 'Mars',
         host_star: 'Sun',
         avg_temp: '-81 Degrees F',
-        distance_to_earth: '',
+        distance_to_earth: '115.82 million (mi)',
         notes: [
             'Notes for Mars 2/4/2021',
             'Additional notes for Mars',

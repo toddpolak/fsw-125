@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 function EditNote(props) {
 
     const initInputs = {
-        //_id: props._id,
         note: props.note
     }
 
@@ -16,12 +15,7 @@ function EditNote(props) {
     }
 
     function saveNote() {
-
-        //console.log('saveNote: ', inputs, props._id, props.index)
-
-        //props.handleSaveNote(props.index, inputs)
         props.handleSaveNote(inputs)
-
         props.setNoteEditToggle(false)
     }
 
