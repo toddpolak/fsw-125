@@ -10,7 +10,8 @@ function EditPlanet(props) {
 
     const initInputs = {
         _id: props._id,
-        planet: props.planet
+        planet: props.planet,
+        notes: props.notes
     }
 
     //console.log('initInputs: ', initInputs)

@@ -44,7 +44,7 @@ export function editPlanet(planet, id) {
 
 export function deletePlanet(id) {
 
-    console.log('deletePlanet: ', id)
+    //console.log('deletePlanet: ', id)
 
     return function (dispatch) {
         return axios.delete(`/planets/${id}`)
@@ -56,6 +56,71 @@ export function deletePlanet(id) {
             })
             .catch(err => console.log(err))
     }
+}
+
+export function editNote(id, noteIndex, notes, noteEdit) {
+
+    //console.log('editNote (id)', id)
+    //console.log('editNote (noteIndex)', noteIndex)
+    //console.log('editNote (notes)', notes)
+    //console.log('editNote (noteEdit)', noteEdit.note)
+
+    const updatedNotes = notes.map((note, index) => noteIndex !== index ? note : noteEdit.note)
+
+    //const newObj = new Object()
+    //newObj.notes = updatedNotes
+
+    //console.log('newObj: ', newObj)
+
+    /*
+    {
+        "notes": [
+            "Notes for Kepler-452b",
+            "Test"
+        ]
+    }
+    */
+
+    const objNotes = {}
+
+    //arr.push('test')
+    //arr.push(updatedNotes)
+
+    //obj.notes = arr
+    objNotes.notes = updatedNotes
+
+    //console.log('editNote (obj)', objNotes)
+
+    //console.log('editNote (updatedNotes)', updatedNotes)
+
+    //"notes": [
+    //    "Notes for Kepler-452b",
+    //    "Additional notes for Kepler-452b"
+    //],
+
+    return function (dispatch) {
+        return axios.put(`/planets/${id}`, objNotes)
+            .then(res => {
+                dispatch({
+                    type: 'EDIT_NOTE',
+                    id: id,
+                    index: noteIndex,
+                    payload: objNotes
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+    /*
+    return {
+        type: 'EDIT_NOTE',
+        id: id,
+        index: noteIndex,
+        payload: updatedNotes
+    }
+    */
+    
+    
 }
 
 function reducer(planets = [], action) {
@@ -79,7 +144,7 @@ function reducer(planets = [], action) {
 
         case 'DELETE_PLANET':
 
-            console.log('DELETE_PLANET: ', action.id)
+            //console.log('DELETE_PLANET: ', action.id)
 
             return planets.filter((planet) => planet._id !== action.id)
 
@@ -88,6 +153,14 @@ function reducer(planets = [], action) {
             //console.log('DELETE_PLANET: ', updatedPlanets)
 
             //return updatedPlanets
+
+        case 'EDIT_NOTE':
+
+            //console.log('EDIT_NOTE: ', action.payload)
+            //console.log('EDIT_NOTE: ', action.index)
+            //console.log('EDIT_NOTE: ', planets)
+
+
 
         default:
             return planets

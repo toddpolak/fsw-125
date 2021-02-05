@@ -22,8 +22,9 @@ const planets = [
         avg_temp: '-81 Degrees F',
         distance_to_earth: '',
         notes: [
-            'Notes for Mars',
-            'Additional notes for Mars'
+            'Notes for Mars 2/4/2021',
+            'Additional notes for Mars',
+            'More notes for Mars'
         ],
         potentially_habitable: true,
         orbit_days: 687,

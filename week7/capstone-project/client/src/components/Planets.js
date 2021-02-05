@@ -13,28 +13,39 @@ function Planets() {
      }, [dispatch])
 
     function handleEdit(inputs, id) {
+
+        //console.log('handleEdit: ', inputs)
+
         dispatch(editPlanet(inputs, id))
     }
 
     function handleSave(planet) {
 
-        //console.log('handleSave: ', planet)   {...planet}
+        //console.log('handleSave: ', planet)
 
         dispatch(addPlanet(planet))
     }
 
     function handleDelete(id) {
 
-        console.log('handleDelete: ', id)
+        //console.log('handleDelete: ', id)
 
         dispatch(deletePlanet(id))
     }
 
+    /*
+    function handleSaveNote(note) {
+
+        console.log('handleSaveNote: ', note)
+
+        dispatch(editNote(note))
+
+    }
+    */
+
     return (
 
         <div>
-
-            { console.log('Planets.js: ', planets)}
 
             <div>
                 <AddPlanet
@@ -48,7 +59,9 @@ function Planets() {
                         {...planet}
                         key={index}
                         handleEdit={handleEdit}
-                        handleDelete={handleDelete} />)
+                        handleDelete={handleDelete}
+                    //handleSaveNote={handleSaveNote} 
+                    />)
 
             }
 

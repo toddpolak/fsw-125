@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
+//import { editNote} from '../redux'
 import EditPlanet from './EditPlanet'
 import Notes from './Notes'
 
 function Planet(props) {
-    const { planet, notes, _id, handleEdit, handleDelete } = props
 
     console.log('props: ', props)
 
-    console.log('props: (_id) ', _id)
+    const { planet, host_star, notes, _id, handleEdit, handleDelete } = props
+    //const { planet, notes, _id, handleEdit, handleDelete, handleSaveNote } = props
 
-    console.log('notes: ', notes)
+    //console.log('props: ', props)
+
+    //console.log('props: (_id) ', _id)
+
+    //console.log('notes: ', notes)
 
     const [planetEditToggle, setPlanetEditToggle] = useState(false)
 
@@ -40,8 +45,11 @@ function Planet(props) {
                                 <Notes
                                     key={index}
                                     _id={_id}
+                                    index={index}
+                                    notes={notes}
                                     note={note}
-                                    index={index} />)
+                                //handleSaveNote={handleSaveNote} 
+                                />)
                             }
                            
                         </div>
@@ -56,6 +64,7 @@ function Planet(props) {
                         <div className='planet'>
                             <EditPlanet 
                                 planet={planet}
+                                notes={notes}
                                 _id={_id}
                                 handleEdit={handleEdit}
                                 setPlanetEditToggle={setPlanetEditToggle} />
