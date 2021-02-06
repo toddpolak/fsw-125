@@ -47,6 +47,15 @@ span.right_column {
 
 }
 
+.planet_img {
+
+}
+
+img {
+    width: 70%;
+    height: auto;
+}
+
 .notes-container {
     width: 425px;
     border: 1px solid green;

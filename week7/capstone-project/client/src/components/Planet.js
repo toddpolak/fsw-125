@@ -4,7 +4,7 @@ import Notes from './Notes'
 
 function Planet(props) {
     const {
-        planet, host_star, avg_temp, distance_to_earth, potentially_habitable, orbit_days,
+        planet, host_star, avg_temp, distance_to_earth, potentially_habitable, orbit_days, imgUrl, 
         notes, _id, handleEdit, handleDelete
     } = props
     const [planetEditToggle, setPlanetEditToggle] = useState(false)
@@ -39,6 +39,11 @@ function Planet(props) {
                                 <span className='left_column'>Orbit Days: </span>
                                 <span className='right_column'>{orbit_days}</span>
                             </div>
+
+                            <div className='items'>
+                                <span className='planet_img'><img src={imgUrl} alt='' /></span>
+                            </div>
+
                             <button
                                 onClick={() => setPlanetEditToggle(prevToggle => !prevToggle)}>
                                 Edit

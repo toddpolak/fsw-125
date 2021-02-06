@@ -14,6 +14,7 @@ const planets = [
         ],
         potentially_habitable: true,
         orbit_days: 385,
+        imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Kepler-452b_artist_concept.jpg/220px-Kepler-452b_artist_concept.jpg',
         _id: uuid()
     },
     {
@@ -28,6 +29,7 @@ const planets = [
         ],
         potentially_habitable: true,
         orbit_days: 687,
+        imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg',
         _id: uuid()
     }
 ]
