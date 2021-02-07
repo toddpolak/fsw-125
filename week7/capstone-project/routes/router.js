@@ -21,7 +21,7 @@ const planets = [
         planet: 'Mars',
         host_star: 'Sun',
         avg_temp: '-81 Degrees F',
-        distance_to_earth: '115.82 million (mi)',
+        distance_to_earth: '115.82 mill (mi)',
         notes: [
             'Notes for Mars 2/4/2021',
             'Additional notes for Mars',
@@ -44,6 +44,14 @@ router.route('/')
         newPlanet._id = uuid()
         planets.push(newPlanet)
         res.status(201).send(newPlanet)
+    })
+
+router.route('/planet')
+    .get((req, res) => {
+        const habitable = (req.query.habitable == 'true')
+        const filteredItems = planets.filter(planet => planet.potentially_habitable === habitable)
+
+        res.status(200).send(filteredItems)
     })
 
 router.route('/:planetId')

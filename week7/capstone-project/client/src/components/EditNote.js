@@ -21,19 +21,23 @@ function EditNote(props) {
 
     return (
         <div>
-            <input
-                type='text'
-                name='note'
-                value={inputs.note}
-                onChange={handleChange}
-                placeholder='Note' />
-            <button onClick={saveNote}>
-                Save
-            </button>
-            <button
-                onClick={() => props.setNoteEditToggle(prevToggle => !prevToggle)}>
-                Cancel
-            </button>
+            <div>
+                <textarea
+                    type='text'
+                    name='note'
+                    value={inputs.note}
+                    onChange={handleChange}
+                    placeholder='Note' />
+            </div>
+            <div>
+                <button onClick={saveNote}>
+                    Save
+                </button>
+                <button
+                    onClick={() => props.setNoteEditToggle(prevToggle => !prevToggle)}>
+                    Cancel
+                </button>
+            </div>
         </div>
     )
 }

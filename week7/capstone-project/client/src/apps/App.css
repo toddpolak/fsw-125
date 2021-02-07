@@ -1,19 +1,79 @@
+body {
+    /*
+    background-image: url(../img/stars.jpg);
+    */
+}
+
 h2 {
     text-align: center;
 }
 
 .container {
-    background-color: whitesmoke;
+    background-color: white;
     width: 800px;
     margin: auto;
     border: 1px solid red;
 }
 
-.form {
-    width: 500px;
+.filter {
+    width: 300px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: auto;
+}
+
+.filter label {
+    padding: 5px;
+}
+
+.add-planet-form {
+    width: 400px;
     border: 1px solid black;
     padding: 20px;
     margin: auto;
+}
+
+.add-planet-form .radio {
+    border: 1px solid black;
+    width: 150px;
+    padding: 10px;
+}
+
+.add-planet-form textarea {
+    resize: none;
+    overflow: hidden;
+    height: 30px;
+    width: 350px;
+}
+
+.edit-planet-form textarea {
+    resize: none;
+    overflow: hidden;
+    height: 30px;
+    width: 170px;
+}
+
+.add-planet-btn {
+    padding: 5px;
+    text-align: center;
+}
+
+.add-planet-btn button {
+    background-color: gainsboro;
+}
+
+.add-note-form {
+    width: 350px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: auto;
+}
+
+.add-note-form textarea {
+    resize: none;
+    overflow: hidden;
+    height: 70px;
+    width: 295px;
 }
 
 .planet-container {
