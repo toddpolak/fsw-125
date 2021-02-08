@@ -27,7 +27,7 @@ const planets = [
             'Additional notes for Mars',
             'More notes for Mars'
         ],
-        potentially_habitable: true,
+        potentially_habitable: false,
         orbit_days: 687,
         imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg',
         _id: uuid()

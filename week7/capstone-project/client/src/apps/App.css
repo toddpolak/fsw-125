@@ -1,7 +1,5 @@
 body {
-    /*
-    background-image: url(../img/stars.jpg);
-    */
+    background-color: lightslategray;
 }
 
 h2 {
@@ -12,14 +10,44 @@ h2 {
     background-color: white;
     width: 800px;
     margin: auto;
-    border: 1px solid red;
+    border: 2px solid lightgray;
+}
+
+input {
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #333;
+    margin: 5px;
+}
+
+.input-temp {
+    width: 100px;
+}
+
+.input-orbit-days {
+    width: 70px;
+}
+
+.edit-orbit-days {
+    width: 75px;
+}
+
+.input-img {
+    margin: 10px;
 }
 
 .filter {
     width: 300px;
-    border: 1px solid black;
-    padding: 5px;
+    padding: 15px;
     margin: auto;
+}
+
+.filter button {
+    margin-right: 5px;
+}
+
+filter button:last-child {
+    margin-right: 0px;
 }
 
 .filter label {
@@ -27,6 +55,7 @@ h2 {
 }
 
 .add-planet-form {
+    background-color: whitesmoke;
     width: 400px;
     border: 1px solid black;
     padding: 20px;
@@ -34,9 +63,12 @@ h2 {
 }
 
 .add-planet-form .radio {
+    background-color: white;
     border: 1px solid black;
     width: 150px;
     padding: 10px;
+    text-align:center;
+    margin: auto;
 }
 
 .add-planet-form textarea {
@@ -50,7 +82,20 @@ h2 {
     resize: none;
     overflow: hidden;
     height: 30px;
-    width: 170px;
+    width: 200px;
+}
+
+.edit-planet-form .radio {
+    padding: 10px;
+}
+
+button {
+    background-color: lightgray;
+}
+
+button:hover {
+    background-color: ghostwhite;
+    cursor: pointer;
 }
 
 .add-planet-btn {
@@ -60,11 +105,18 @@ h2 {
 
 .add-planet-btn button {
     background-color: gainsboro;
+    height: 25px;
+}
+
+.add-planet-btn button:hover {
+    background-color: darkslategrey;
+    color: white;
+    cursor: pointer;
 }
 
 .add-note-form {
     width: 350px;
-    border: 1px solid black;
+
     padding: 10px;
     margin: auto;
 }
@@ -76,6 +128,13 @@ h2 {
     width: 295px;
 }
 
+.edit-note-form textarea {
+    resize: none;
+    overflow: hidden;
+    height: 70px;
+    width: 350px;
+}
+
 .planet-container {
     width: 750px;
     display: grid;
@@ -85,30 +144,21 @@ h2 {
     grid-column-gap: 5px;
     padding: 10px;
     margin: auto;
+    border: 1px solid lightgray;
 }
 
 .planet {
-    width: 270px;
-    border: 1px solid orange;
+    width: 280px;
     padding: 10px;
 }
 
 .items {
     width: 250px;
     padding: 10px;
-    border: 1px solid green;
 }
 
-span.left_column {
+span.left-column {
     font-weight: bold;
-}
-
-span.right_column {
-
-}
-
-.planet_img {
-
 }
 
 img {
@@ -118,16 +168,14 @@ img {
 
 .notes-container {
     width: 425px;
-    border: 1px solid green;
     padding: 10px;
 }
 
 .notes {
-    border: 1px solid black;
     padding: 10px;
 }
 
 .note {
-    border: 1px solid yellow;
+    border: 1px solid lightgray;
     padding: 10px;
 }

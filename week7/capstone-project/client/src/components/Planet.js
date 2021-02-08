@@ -17,31 +17,31 @@ function Planet(props) {
                         <div className='planet'>
                             <div>
                                 <div className='items'>
-                                    <span className='left_column'>Planet: </span>
-                                    <span className='right_column'>{planet}</span>
+                                    <span className='left-column'>Planet: </span>
+                                    <span><h2>{planet}</h2></span>
                                 </div>
                                 <div className='items'>
-                                    <span className='left_column'>Host Star: </span>
-                                    <span className='right_column'>{host_star}</span>
+                                    <span className='left-column'>Host Star: </span>
+                                    <span>{host_star}</span>
                                 </div>
                                 <div className='items'>
-                                    <span className='left_column'>Average Temp: </span>
-                                    <span className='right_column'>{avg_temp}</span>
+                                    <span className='left-column'>Average Temp: </span>
+                                    <span>{avg_temp}</span>
                                 </div>
                                 <div className='items'>
-                                    <span className='left_column'>Distance to Earth: </span>
-                                    <span className='right_column'>{distance_to_earth}</span>
+                                    <span className='left-column'>Distance to Earth: </span>
+                                    <span>{distance_to_earth}</span>
                                 </div>
                                 <div className='items'>
-                                    <span className='left_column'>Potentially Habitable: </span>
-                                    <span className='right_column'>{potentially_habitable === true ? 'Yes' : 'No'}</span>
+                                    <span className='left-column'>Potentially Habitable: </span>
+                                    <span>{potentially_habitable === true ? 'Yes' : 'No'}</span>
                                 </div>
                                 <div className='items'>
-                                    <span className='left_column'>Orbit Days: </span>
-                                    <span className='right_column'>{orbit_days}</span>
+                                    <span className='left-column'>Orbit Days: </span>
+                                    <span>{orbit_days}</span>
                                 </div>
                                 <div className='items'>
-                                    <span className='planet_img'><img src={imgUrl} alt='' /></span>
+                                    <span><img src={imgUrl} alt='' /></span>
                                 </div>
                             </div>
                             <div>

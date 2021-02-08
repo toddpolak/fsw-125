@@ -21,7 +21,7 @@ function EditNote(props) {
 
     return (
         <div>
-            <div>
+            <div className='edit-note-form'>
                 <textarea
                     type='text'
                     name='note'

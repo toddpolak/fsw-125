@@ -35,39 +35,44 @@ function AddPlanet() {
 
     return (
         <div className='add-planet-form'>
-
-
             <div>
-                <input
-                    type='text'
-                    name='planet'
-                    value={inputs.planet}
-                    onChange={handleChange}
-                    placeholder='Planet' />
-                <input
-                    type='text'
-                    name='host_star'
-                    value={inputs.host_star}
-                    onChange={handleChange}
-                    placeholder='Host Star' />
-                <input
-                    type='text'
-                    name='avg_temp'
-                    value={inputs.avg_temp}
-                    onChange={handleChange}
-                    placeholder='Average Temp' />
-                <input
-                    type='text'
-                    name='distance_to_earth'
-                    value={inputs.distance_to_earth}
-                    onChange={handleChange}
-                    placeholder='Distance to Earth' />
-                <input
-                    type='text'
-                    name='orbit_days'
-                    value={inputs.orbit_days}
-                    onChange={handleChange}
-                    placeholder='Orbit Days' />
+                <div>
+                    <input
+                        type='text'
+                        name='planet'
+                        value={inputs.planet}
+                        onChange={handleChange}
+                        placeholder='Planet' />
+                    <input
+                        type='text'
+                        name='host_star'
+                        value={inputs.host_star}
+                        onChange={handleChange}
+                        placeholder='Host Star' />
+                </div>
+                <div>
+                    <input
+                        type='text'
+                        name='avg_temp'
+                        value={inputs.avg_temp}
+                        onChange={handleChange}
+                        placeholder='Average Temp'
+                        className='input-temp' />
+                    <input
+                        type='text'
+                        name='distance_to_earth'
+                        value={inputs.distance_to_earth}
+                        onChange={handleChange}
+                        placeholder='Distance to Earth'
+                        className='input-distance' />
+                    <input
+                        type='text'
+                        name='orbit_days'
+                        value={inputs.orbit_days}
+                        onChange={handleChange}
+                        placeholder='Orbit Days'
+                        className='input-orbit-days' />
+                </div>
             </div>
             <div>
                 <textarea
@@ -75,7 +80,8 @@ function AddPlanet() {
                     name='imgUrl'
                     value={inputs.imgUrl}
                     onChange={handleChange}
-                    placeholder='Image URL' />
+                    placeholder='Image URL'
+                    className='input-img' />
             </div>
             <div className='radio'>
                 <label>Potentially Habitable:</label>
@@ -96,8 +102,6 @@ function AddPlanet() {
                         onChange={handleChange} />
                 </div>
             </div>
-
-
             <div className='add-planet-btn'>
                 <button onClick={handleSave}>
                     Add Planet
@@ -105,7 +109,6 @@ function AddPlanet() {
             </div>
         </div>
     )
-
 }
 
 export default AddPlanet
