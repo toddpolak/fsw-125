@@ -89,7 +89,7 @@ function EditPlanet(props) {
                 <div>
                     <span>
                         <input
-                            type='text'
+                            type='number'
                             name='orbit_days'
                             value={inputs.orbit_days}
                             onChange={handleChange}

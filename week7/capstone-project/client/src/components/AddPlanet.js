@@ -66,7 +66,7 @@ function AddPlanet() {
                         placeholder='Distance to Earth'
                         className='input-distance' />
                     <input
-                        type='text'
+                        type='number'
                         name='orbit_days'
                         value={inputs.orbit_days}
                         onChange={handleChange}
